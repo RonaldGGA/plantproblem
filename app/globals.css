@@ -118,7 +118,6 @@ html {
   letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
 }
 
 .site-nav {
@@ -508,6 +507,8 @@ html {
 }
 
 .site-footer__logo {
+  display: flex;
+  flex-direction: "row";
   font-family: var(--font-display);
   font-size: 1.4rem;
   color: #ffffff;
