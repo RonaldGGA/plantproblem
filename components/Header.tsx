@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -5,7 +6,8 @@ export default function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link href="/" className="site-logo">
-          🌿 PlantProblem
+          <Image src="/icon0.svg" alt="PlantProblem" width={32} height={32} />
+          PlantProblem
         </Link>
         <nav className="site-nav">
           <Link href="/blog">All Posts</Link>
