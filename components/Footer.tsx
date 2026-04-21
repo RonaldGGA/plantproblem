@@ -11,6 +11,7 @@ export default function Footer() {
             alt="PlantProblem Logo"
             width={32}
             height={32}
+            style={{ height: "auto" }}
           />
           <p>PlantProblem</p>
         </span>

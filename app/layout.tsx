@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
+    google: "abc123xyz",
   },
 
   category: "lifestyle",
@@ -105,12 +105,6 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
         {/* <link rel="preconnect" href="https://pagead2.googlesyndication.com" /> */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
       </head>
       <body>
         <JsonLd

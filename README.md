@@ -14,7 +14,7 @@ People search "why is my plant dying" and get 2000-word articles that bury the a
 
 ## Stack
 
-- **Next.js 14** — App Router, fully static
+- **Next.js 16** — App Router, fully static
 - **TypeScript** — strict mode
 - **MDX** — posts are just markdown files
 - **Tailwind CSS** — styling

@@ -155,7 +155,7 @@ html {
 
 .tag--gold {
   background: #fbf5e6;
-  color: var(--color-gold);
+  color: #7a6020;
 }
 
 .featured-label {
@@ -163,7 +163,7 @@ html {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #9a7b2e;
+  color: #7a6020;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;

@@ -11,6 +11,7 @@ export default function Header() {
             alt="PlantProblem Logo"
             width={32}
             height={32}
+            style={{ height: "auto" }}
           />
           PlantProblem
         </Link>
