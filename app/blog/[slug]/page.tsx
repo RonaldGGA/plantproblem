@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+
 import Link from "next/link";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -36,6 +38,62 @@ export default async function PostPage({
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: meta.title,
+          description: meta.description,
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`,
+          datePublished: meta.date,
+          dateModified: meta.date,
+          image: meta.coverImage
+            ? `${process.env.NEXT_PUBLIC_BASE_URL}${meta.coverImage}`
+            : `${process.env.NEXT_PUBLIC_BASE_URL}/opengraph-image.png`,
+          author: {
+            "@type": "Organization",
+            name: "PlantProblem",
+            url: process.env.NEXT_PUBLIC_BASE_URL,
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "PlantProblem",
+            url: process.env.NEXT_PUBLIC_BASE_URL,
+            logo: {
+              "@type": "ImageObject",
+              url: `${process.env.NEXT_PUBLIC_BASE_URL}/icon.png`,
+            },
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`,
+          },
+          keywords: meta.tags.join(", "),
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: process.env.NEXT_PUBLIC_BASE_URL,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: meta.title,
+                item: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${slug}`,
+              },
+            ],
+          },
+        }}
+      />
       <div className="container">
         <header className="article-header">
           <Link href="/blog" className="article-header__back">

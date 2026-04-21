@@ -6,7 +6,12 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <span className="site-footer__logo">
-          <Image src="/icon0.svg" alt="PlantProblem" width={32} height={32} />
+          <Image
+            src="/icon.svg"
+            alt="PlantProblem Logo"
+            width={32}
+            height={32}
+          />
           <p>PlantProblem</p>
         </span>
         <nav className="site-footer__nav">

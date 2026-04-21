@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Host
+Host: https://www.plantproblem.com
+
+# Sitemaps
+Sitemap: https://www.plantproblem.com/sitemap.xml

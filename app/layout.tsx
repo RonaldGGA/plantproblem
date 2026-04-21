@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -103,6 +104,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
+        {/* <link rel="preconnect" href="https://pagead2.googlesyndication.com" /> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -111,6 +113,33 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "PlantProblem",
+            url: process.env.NEXT_PUBLIC_BASE_URL,
+            description:
+              "Practical, no-fluff guides to diagnose and fix your houseplant problems.",
+            publisher: {
+              "@type": "Organization",
+              name: "PlantProblem",
+              url: process.env.NEXT_PUBLIC_BASE_URL,
+              logo: {
+                "@type": "ImageObject",
+                url: `${process.env.NEXT_PUBLIC_BASE_URL}/icon.png`,
+              },
+            },
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: `${process.env.NEXT_PUBLIC_BASE_URL}/blog?q={search_term_string}`,
+              },
+              "query-input": "required name=search_term_string",
+            },
+          }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

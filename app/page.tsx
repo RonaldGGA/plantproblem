@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import Image from "next/image";
 
 export default function Home() {
   const posts = getAllPosts();
@@ -59,7 +60,30 @@ export default function Home() {
         <section className="animate-fade-up animate-fade-up-4">
           <p className="featured-label">Featured Article</p>
           <Link href={`/blog/${featured.slug}`} className="featured-card">
-            <div className="featured-card__image">🪴</div>
+            <>
+              <div className="featured-card__image">
+                {featured.coverImage ? (
+                  <Image
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : (
+                  <span
+                    style={{
+                      fontSize: "5rem",
+                      position: "relative",
+                      zIndex: 1,
+                    }}
+                  >
+                    🪴
+                  </span>
+                )}
+              </div>
+            </>
             <div className="featured-card__content">
               <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                 {featured.tags.map((tag) => (

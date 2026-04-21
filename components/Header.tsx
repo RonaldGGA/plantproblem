@@ -6,7 +6,12 @@ export default function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link href="/" className="site-logo">
-          <Image src="/icon0.svg" alt="PlantProblem" width={32} height={32} />
+          <Image
+            src="/icon.svg"
+            alt="PlantProblem Logo"
+            width={32}
+            height={32}
+          />
           PlantProblem
         </Link>
         <nav className="site-nav">
