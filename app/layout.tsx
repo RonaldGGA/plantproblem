@@ -90,12 +90,11 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "abc123xyz",
+    google: "xXAVFFoSJ0DJ-pRzB3UhtoDBH611SzZOwixtUiYTDDE",
   },
 
   category: "lifestyle",
 };
-
 export default function RootLayout({
   children,
 }: {
