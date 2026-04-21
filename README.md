@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PlantProblem
 
-## Getting Started
+A blog about houseplants. No ads in the way, no fluff, just answers.
 
-First, run the development server:
+Live at [plantproblem.com](https://www.plantproblem.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## What it is
+
+People search "why is my plant dying" and get 2000-word articles that bury the answer. This site fixes that. Short, direct guides that tell you what's wrong and how to fix it.
+
+---
+
+## Stack
+
+- **Next.js 14** — App Router, fully static
+- **TypeScript** — strict mode
+- **MDX** — posts are just markdown files
+- **Tailwind CSS** — styling
+- **Vercel** — deploy
+
+No database. No auth. No backend. Just files.
+
+---
+
+## Project structure
+
+```
+├── app/                  # Pages and layouts
+├── components/           # Reusable UI
+├── content/posts/        # MDX articles
+├── lib/posts.ts          # Reads and parses MDX files
+└── public/               # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+Set this env variable before running:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_BASE_URL=https://www.plantproblem.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Writing a post
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a new `.mdx` file in `content/posts/`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```mdx
+---
+title: "Why Is My Pothos Turning Yellow?"
+description: "The 7 most common causes and how to fix each one."
+date: "2026-04-20"
+tags: ["Pothos", "Troubleshooting"]
+coverImage: "/images/pothos-yellow.jpg"
+---
+
+Your content here.
+```
+
+That's it. The post shows up automatically.
+
+---
+
+© 2026 PlantProblem. All rights reserved.
