@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
+import EmailSubscribe from "@/components/EmailSubscribe";
 
 export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -116,6 +117,9 @@ export default async function PostPage({
 
         <div className="prose">
           <MDXRemote source={content} />
+        </div>
+        <div style={{ marginTop: "4rem" }}>
+          <EmailSubscribe />
         </div>
       </div>
     </>

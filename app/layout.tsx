@@ -101,7 +101,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <head>
         {/* <link rel="preconnect" href="https://pagead2.googlesyndication.com" /> */}
       </head>

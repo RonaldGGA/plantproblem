@@ -69,7 +69,7 @@ export default function Home() {
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover", height: "auto" }}
                   />
                 ) : (
                   <span

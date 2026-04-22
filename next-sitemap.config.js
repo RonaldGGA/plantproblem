@@ -5,7 +5,16 @@ module.exports = {
     changefreq: "weekly",
     priority: 0.7,
     sitemapSize: 5000,
-    exclude: ["/privacy"],
+    exclude: [
+        "/privacy",
+        "/*.png",
+        "/*.svg",
+        "/*.ico",
+        "*/opengraph-image",
+        "*/twitter-image",
+        "*/icon",
+        "*/apple-icon",
+    ],
 
     additionalPaths: async (config) => [
         await config.transform(config, "/"),
