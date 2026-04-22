@@ -28,7 +28,6 @@ export default async function Image({
         padding: "72px 80px",
       }}
     >
-      {/* Logo */}
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
         <div style={{ display: "flex", fontSize: 36 }}>🌿</div>
         <div
@@ -43,7 +42,6 @@ export default async function Image({
         </div>
       </div>
 
-      {/* Centro */}
       <div
         style={{
           display: "flex",
@@ -53,7 +51,6 @@ export default async function Image({
           justifyContent: "center",
         }}
       >
-        {/* Tags */}
         <div style={{ display: "flex", gap: "10px" }}>
           {meta.tags.slice(0, 3).map((tag: string) => (
             <div
@@ -74,7 +71,6 @@ export default async function Image({
           ))}
         </div>
 
-        {/* Título */}
         <div
           style={{
             display: "flex",
@@ -88,7 +84,6 @@ export default async function Image({
           {meta.title}
         </div>
 
-        {/* Descripción */}
         <div
           style={{
             display: "flex",
@@ -102,7 +97,6 @@ export default async function Image({
         </div>
       </div>
 
-      {/* Footer */}
       <div
         style={{
           display: "flex",

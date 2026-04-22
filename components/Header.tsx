@@ -12,6 +12,8 @@ export default function Header() {
             width={32}
             height={32}
             style={{ height: "auto", width: "auto" }}
+            loading="eager"
+            priority
           />
           PlantProblem
         </Link>

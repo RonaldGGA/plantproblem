@@ -12,6 +12,8 @@ export default function Footer() {
             width={32}
             height={32}
             style={{ height: "auto", width: "auto" }}
+            loading="eager"
+            priority
           />
           <p>PlantProblem</p>
         </span>
