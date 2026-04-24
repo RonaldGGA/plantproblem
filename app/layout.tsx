@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -141,6 +143,8 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
       </body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
