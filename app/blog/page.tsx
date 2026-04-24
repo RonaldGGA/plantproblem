@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import JsonLd from "@/components/JsonLd";
+import BlogSearch from "@/components/BlogSearch";
 
 export const metadata: Metadata = {
   title: "All Posts",
@@ -52,11 +53,7 @@ export default function BlogPage() {
         >
           {posts.length} articles on houseplant care & troubleshooting
         </p>
-        <div className="posts-grid">
-          {posts.map((post) => (
-            <PostCard key={post.slug} post={post} />
-          ))}
-        </div>
+        <BlogSearch posts={posts} />
       </div>
     </>
   );

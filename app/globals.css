@@ -452,17 +452,22 @@ html {
 
 .prose p {
   margin-bottom: 1.5rem;
-  color: #2e2e2c;
+  color: var(--color-text);
 }
 
-.prose ul,
+.prose ul {
+  list-style-type: disc;
+  margin: 0.5rem 0 1.5rem 1.25rem;
+}
+
 .prose ol {
+  list-style-type: decimal;
   margin: 0.5rem 0 1.5rem 1.25rem;
 }
 
 .prose li {
   margin-bottom: 0.6rem;
-  color: #2e2e2c;
+  color: var(--color-text);
 }
 
 .prose strong {
@@ -482,15 +487,16 @@ html {
 .prose a {
   color: var(--color-accent);
   text-decoration: underline;
-  text-decoration-color: var(--color-accent-light);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 0.2s;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .prose a:hover {
-  text-decoration-color: var(--color-accent);
+  color: var(--color-accent-hover);
 }
-
 .prose table {
   width: 100%;
   border-collapse: collapse;
@@ -516,7 +522,7 @@ html {
 .prose td {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--color-border);
-  color: #2e2e2c;
+  color: var(--color-text);
   vertical-align: top;
 }
 

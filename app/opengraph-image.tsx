@@ -16,30 +16,43 @@ export default async function Image() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: "24px",
+        gap: "20px",
       }}
     >
-      <div style={{ fontSize: 96 }}>
-        <img src="/icon.svg" alt="PlantProblem" width="32" height="32" />
+      <div
+        style={{
+          display: "flex",
+          fontSize: 22,
+          color: "#7AAD7A",
+          letterSpacing: "0.15em",
+        }}
+      >
+        🌿 plantproblem.com
       </div>
       <div
         style={{
-          fontSize: 64,
+          fontSize: 72,
           fontWeight: 700,
           color: "#FFFFFF",
           letterSpacing: "-2px",
+          lineHeight: 1,
         }}
       >
         PlantProblem
       </div>
       <div
+        style={{ width: 48, height: 4, background: "#7AAD7A", borderRadius: 2 }}
+      />
+      <div
         style={{
-          fontSize: 28,
-          color: "#7AAD7A",
-          letterSpacing: "0px",
+          fontSize: 24,
+          color: "#A8C8A8",
+          textAlign: "center",
+          maxWidth: 560,
+          lineHeight: 1.4,
         }}
       >
-        Houseplant Care & Troubleshooting
+        When your plant looks wrong, here&apos;s exactly what&apos;s wrong.
       </div>
     </div>,
     size

@@ -16,6 +16,9 @@ export default async function Image({
   const { slug } = await params;
   const { meta } = getPostBySlug(slug);
 
+  const fontSize =
+    meta.title.length > 60 ? 46 : meta.title.length > 40 ? 54 : 64;
+
   return new ImageResponse(
     <div
       style={{
@@ -23,102 +26,42 @@ export default async function Image({
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: "72px 80px",
+        overflow: "hidden",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <div style={{ display: "flex", fontSize: 36 }}>🌿</div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 28,
-            fontWeight: 700,
-            color: "#2D5A3D",
-          }}
-        >
-          PlantProblem
-        </div>
-      </div>
-
+      <div style={{ width: 16, background: "#2D5A3D", flexShrink: 0 }} />
       <div
         style={{
+          flex: 1,
           display: "flex",
           flexDirection: "column",
-          gap: "20px",
-          flex: 1,
-          justifyContent: "center",
+          justifyContent: "space-between",
+          padding: "64px 80px",
         }}
       >
-        <div style={{ display: "flex", gap: "10px" }}>
-          {meta.tags.slice(0, 3).map((tag: string) => (
-            <div
-              key={tag}
-              style={{
-                display: "flex",
-                background: "#EBF2ED",
-                color: "#2D5A3D",
-                fontSize: 18,
-                fontWeight: 700,
-                padding: "4px 16px",
-                borderRadius: "999px",
-                textTransform: "uppercase",
-              }}
-            >
-              {tag}
-            </div>
-          ))}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            fontSize: meta.title.length > 50 ? 52 : 64,
-            fontWeight: 700,
-            color: "#1C1C1A",
-            lineHeight: 1.1,
-            maxWidth: "900px",
-          }}
-        >
-          {meta.title}
-        </div>
-
         <div
           style={{
             display: "flex",
             fontSize: 26,
-            color: "#6E6D68",
-            lineHeight: 1.5,
-            maxWidth: "800px",
+            fontWeight: 700,
+            color: "#2D5A3D",
           }}
         >
-          {meta.description}
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderTop: "2px solid #E2E0D8",
-          paddingTop: "28px",
-        }}
-      >
-        <div style={{ display: "flex", fontSize: 22, color: "#6E6D68" }}>
-          {meta.date} · {meta.readingTime}
+          🌿 PlantProblem
         </div>
         <div
           style={{
-            display: "flex",
-            fontSize: 22,
-            color: "#2D5A3D",
+            fontSize,
             fontWeight: 700,
+            color: "#1C1C1A",
+            lineHeight: 1.05,
+            letterSpacing: "-1.5px",
+            maxWidth: 960,
           }}
         >
-          plantproblem.com
+          {meta.title}
         </div>
+        <div style={{ fontSize: 22, color: "#6E6D68" }}>plantproblem.com</div>
       </div>
     </div>,
     size

@@ -26,6 +26,10 @@ export default function Footer() {
           © {new Date().getFullYear()} PlantProblem · Practical advice for happy
           plants.
         </p>
+        <p className="site-footer__disclosure">
+          Some links on this site are affiliate links. If you click and make a
+          purchase, we may earn a small commission at no extra cost to you.
+        </p>
       </div>
     </footer>
   );

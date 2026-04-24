@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Home() {
   const posts = getAllPosts();
   const featured = posts[0];
-  const rest = posts.slice(1);
+  const rest = posts.slice(1, 7);
 
   return (
     <div
@@ -116,6 +116,27 @@ export default function Home() {
             {rest.map((post) => (
               <PostCard key={post.slug} post={post} />
             ))}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "3rem" }}>
+            <Link
+              href="/blog"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "var(--color-accent)",
+                color: "white",
+                padding: "0.85rem 2rem",
+                borderRadius: "10px",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                textDecoration: "none",
+                transition: "background 0.2s",
+              }}
+            >
+              View all articles →
+            </Link>
           </div>
         </section>
       )}

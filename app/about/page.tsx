@@ -1,11 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "About PlantProblem — who we are and why we write about houseplants.",
-};
-
 export default function AboutPage() {
   return (
     <div className="container" style={{ paddingTop: "4rem" }}>
@@ -20,14 +12,21 @@ export default function AboutPage() {
           About PlantProblem
         </h1>
         <p>
-          PlantProblem was created for one simple reason: most houseplant advice
-          online is vague, generic, or buried under ads. We write practical,
-          specific guides that actually help you figure out what&apos;s wrong,
-          and fix it.
+          Most houseplant advice online tells you to &quot;check your watering
+          schedule&quot; and leaves it there. That&apos;s not an answer.
+          That&apos;s a suggestion to keep guessing.
         </p>
         <p>
-          Every article is researched carefully and written in plain language.
-          No fluff, no filler.
+          PlantProblem exists because plants give you specific signals and those
+          signals have specific meanings. A brown tip at the edge of a leaf
+          means something different from a brown spot in the center. Yellow
+          leaves on the bottom mean something different from yellow leaves at
+          the top. We write about the difference.
+        </p>
+        <p>
+          Every article starts with a diagnosis table. Every fix is something
+          you can do today. No filler, no vague advice, no paragraph telling you
+          that plants need water and sunlight.
         </p>
       </div>
     </div>
