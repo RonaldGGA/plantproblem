@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
-import PostCard from "@/components/PostCard";
 import JsonLd from "@/components/JsonLd";
 import BlogSearch from "@/components/BlogSearch";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "All Posts",
+  title: "All Articles",
   description:
     "Browse all houseplant care guides and troubleshooting articles.",
 };
@@ -30,30 +30,33 @@ export default function BlogPage() {
           },
         }}
       />
-      <div
-        className="container"
-        style={{ paddingTop: "4rem", paddingBottom: "4rem" }}
-      >
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            letterSpacing: "-0.02em",
-            marginBottom: "0.75rem",
-          }}
-        >
-          All Posts
-        </h1>
-        <p
-          style={{
-            color: "var(--color-muted)",
-            marginBottom: "3rem",
-            fontSize: "1rem",
-          }}
-        >
-          {posts.length} articles on houseplant care & troubleshooting
-        </p>
-        <BlogSearch posts={posts} />
+
+      <div className="blog-header">
+        <div className="container">
+          <p className="hero__eyebrow animate-fade-up animate-fade-up-1">
+            <span className="hero__eyebrow-line" />
+            Library
+          </p>
+          <h1 className="blog-header__title animate-fade-up animate-fade-up-2">
+            Every plant problem,
+            <br />
+            <span style={{ color: "var(--color-accent)", fontStyle: "italic" }}>
+              answered specifically.
+            </span>
+          </h1>
+          <p
+            className="blog-header__count animate-fade-up animate-fade-up-3"
+            style={{ marginTop: "0.75rem" }}
+          >
+            {posts.length} articles on houseplant care & troubleshooting
+          </p>
+        </div>
+      </div>
+
+      <div className="container" style={{ paddingBottom: "5rem" }}>
+        <Suspense fallback={<div style={{ height: "200px" }} />}>
+          <BlogSearch posts={posts} />
+        </Suspense>
       </div>
     </>
   );

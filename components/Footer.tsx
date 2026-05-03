@@ -1,35 +1,53 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container site-footer__inner">
-        <span className="site-footer__logo">
-          <Image
-            src="/icon.svg"
-            alt="PlantProblem Logo"
-            width={32}
-            height={32}
-            style={{ height: "auto", width: "auto" }}
-            loading="eager"
-            priority
-          />
-          <p>PlantProblem</p>
-        </span>
-        <nav className="site-footer__nav">
-          <Link href="/blog">All Posts</Link>
-          <Link href="/about">About</Link>
-          <Link href="/privacy">Privacy Policy</Link>
-        </nav>
-        <p className="site-footer__copy">
-          © {new Date().getFullYear()} PlantProblem · Practical advice for happy
-          plants.
-        </p>
-        <p className="site-footer__disclosure">
-          Some links on this site are affiliate links. If you click and make a
-          purchase, we may earn a small commission at no extra cost to you.
-        </p>
+    <footer className="footer">
+      <div className="footer__inner">
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}
+        >
+          <span className="footer__brand">
+            <span
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: "var(--color-accent)",
+                display: "inline-block",
+                flexShrink: 0,
+              }}
+            />
+            PlantProblem
+          </span>
+          <p className="footer__copy">
+            © {new Date().getFullYear()} PlantProblem · Practical advice for
+            happy plants.
+          </p>
+          <p
+            style={{
+              fontSize: "0.72rem",
+              color: "var(--color-muted-2)",
+              maxWidth: "340px",
+              lineHeight: 1.6,
+            }}
+          >
+            Some links are affiliate links. If you purchase through them, we may
+            earn a small commission at no extra cost to you.
+          </p>
+        </div>
+
+        <ul className="footer__links">
+          <li>
+            <Link href="/blog">All articles</Link>
+          </li>
+          <li>
+            <Link href="/about">About</Link>
+          </li>
+          <li>
+            <Link href="/privacy">Privacy Policy</Link>
+          </li>
+        </ul>
       </div>
     </footer>
   );
