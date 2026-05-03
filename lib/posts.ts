@@ -5,6 +5,11 @@ import readingTime from "reading-time";
 
 const postsDir = path.join(process.cwd(), "content/posts");
 
+export type DiagnosisRow = {
+  symptom: string;
+  cause: string;
+};
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -13,11 +18,11 @@ export type PostMeta = {
   tags: string[];
   readingTime: string;
   coverImage?: string;
+  diagnosisPreview?: DiagnosisRow[];
 };
 
 export function getAllPosts(): PostMeta[] {
   const files = fs.readdirSync(postsDir);
-
   return files
     .filter((f) => f.endsWith(".mdx"))
     .map((filename) => {
@@ -25,7 +30,6 @@ export function getAllPosts(): PostMeta[] {
       const raw = fs.readFileSync(path.join(postsDir, filename), "utf-8");
       const { data, content } = matter(raw);
       const rt = readingTime(content);
-
       return {
         slug,
         title: data.title,
@@ -34,6 +38,7 @@ export function getAllPosts(): PostMeta[] {
         tags: data.tags ?? [],
         readingTime: rt.text,
         coverImage: data.coverImage ?? null,
+        diagnosisPreview: data.diagnosisPreview ?? null,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -44,7 +49,6 @@ export function getPostBySlug(slug: string) {
   const raw = fs.readFileSync(filepath, "utf-8");
   const { data, content } = matter(raw);
   const rt = readingTime(content);
-
   return {
     meta: {
       slug,
@@ -54,6 +58,7 @@ export function getPostBySlug(slug: string) {
       tags: data.tags ?? [],
       readingTime: rt.text,
       coverImage: data.coverImage ?? null,
+      diagnosisPreview: data.diagnosisPreview ?? null,
     } as PostMeta,
     content,
   };

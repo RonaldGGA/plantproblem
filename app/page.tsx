@@ -1,7 +1,20 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
-import Image from "next/image";
+import EmailSubscribe from "@/components/EmailSubscribe";
+
+const TICKER_ITEMS = [
+  "Pothos",
+  "Monstera",
+  "Snake Plant",
+  "Peace Lily",
+  "Fiddle Leaf Fig",
+  "ZZ Plant",
+  "Spider Plant",
+  "Pests",
+  "Root Rot",
+  "Propagation",
+];
 
 export default function Home() {
   const posts = getAllPosts();
@@ -10,156 +23,157 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
-        <svg
-          className="hero__decoration"
-          viewBox="0 0 420 420"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <circle cx="210" cy="210" r="200" stroke="#2D5A3D" strokeWidth="1" />
-          <circle
-            cx="210"
-            cy="210"
-            r="150"
-            stroke="#2D5A3D"
-            strokeWidth="0.5"
-          />
-          <circle
-            cx="210"
-            cy="210"
-            r="100"
-            stroke="#C9A84C"
-            strokeWidth="0.5"
-          />
-          <path
-            d="M210 10 Q320 120 210 210 Q100 300 210 410"
-            stroke="#2D5A3D"
-            strokeWidth="0.8"
-          />
-          <path
-            d="M10 210 Q120 100 210 210 Q300 320 410 210"
-            stroke="#2D5A3D"
-            strokeWidth="0.8"
-          />
-          <circle cx="210" cy="210" r="4" fill="#2D5A3D" />
-        </svg>
-
-        <div className="container">
-          <p className="hero__eyebrow animate-fade-up animate-fade-up-1">
-            <span className="hero__eyebrow-line" />
-            Houseplant Care & Troubleshooting
-          </p>
-
-          <h1 className="hero__title animate-fade-up animate-fade-up-2">
-            Your plant has a problem.
-            <br />
-            <em>We have the answer.</em>
-          </h1>
-
-          <p className="hero__sub animate-fade-up animate-fade-up-3">
-            No guesswork. No generic advice. Practical, specific guides that
-            tell you exactly what&apos;s wrong and exactly how to fix it.
-          </p>
-
-          <div
-            className="animate-fade-up animate-fade-up-4"
-            style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
-          >
-            <Link href="/blog" className="btn-primary">
-              Browse all articles →
-            </Link>
-            <Link href="/about" className="btn-ghost">
-              About this site
-            </Link>
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="hero animate-fade-up animate-fade-up-1">
+        <div className="hero__inner">
+          <div className="hero__left">
+            <p className="hero__eyebrow">
+              Houseplant Care &amp; Troubleshooting
+            </p>
+            <h1 className="hero__title">
+              Your plant has a problem.
+              <strong>We have</strong>
+              <em>the answer.</em>
+            </h1>
+            <p className="hero__sub">
+              No guesswork. No generic advice. Specific guides that tell you
+              exactly what&apos;s wrong — and how to fix it today.
+            </p>
+            <div className="hero__cta-row">
+              <Link href="/blog" className="btn-primary">
+                Browse all articles →
+              </Link>
+              <Link href="/about" className="btn-ghost">
+                About this site
+              </Link>
+            </div>
           </div>
 
-          <div className="stats-bar animate-fade-up animate-fade-up-5">
-            <div className="stat">
-              <span className="stat__value">{posts.length}</span>
-              <span className="stat__label">Articles</span>
-            </div>
-            <div className="stat">
-              <span className="stat__value">5+</span>
-              <span className="stat__label">Plants covered</span>
-            </div>
-            <div className="stat">
-              <span className="stat__value">0</span>
-              <span className="stat__label">Generic advice</span>
+          <div className="hero__right">
+            <div className="stats-bar">
+              <div className="stat">
+                <span className="stat__value">{posts.length}</span>
+                <span className="stat__label">Articles published</span>
+              </div>
+              <div className="stat">
+                <span className="stat__value">10+</span>
+                <span className="stat__label">Plants covered</span>
+              </div>
+              <div className="stat">
+                <span className="stat__value">0</span>
+                <span className="stat__label">Generic advice</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="container">
+      {/* ── TICKER ───────────────────────────────────────── */}
+      <div className="ticker">
+        <span className="ticker__label">{"// Topics"}</span>
+        <div className="ticker__track">
+          {/* Items duplicated so the CSS loop is seamless */}
+          <div className="ticker__items">
+            <div className="ticker__items-inner">
+              {TICKER_ITEMS.map((item, i) => (
+                <span
+                  key={`a-${i}`}
+                  className={`ticker__item${i === 0 ? " ticker__item--active" : ""}`}
+                >
+                  <span className="ticker__dot" />
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="ticker__items-inner">
+              {TICKER_ITEMS.map((item, i) => (
+                <span key={`b-${i}`} className="ticker__item">
+                  <span className="ticker__dot" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── MAIN ─────────────────────────────────────────── */}
+      <div className="container" style={{ paddingTop: "2.5rem" }}>
+        {/* Featured article */}
         {featured && (
           <section
-            className="animate-fade-up animate-fade-up-4"
-            style={{ marginBottom: "4rem" }}
+            className="animate-fade-up animate-fade-up-2"
+            style={{ marginBottom: "2.5rem" }}
           >
-            <p className="section-label">Featured Article</p>
+            <p className="section-label">Featured article</p>
 
             <Link href={`/blog/${featured.slug}`} className="featured-card">
-              <div className="featured-card__image">
-                {featured.coverImage ? (
-                  <Image
-                    src={featured.coverImage}
-                    alt={featured.title}
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                ) : (
-                  <span className="featured-card__image-placeholder">🪴</span>
-                )}
+              {/* Number column */}
+              <div className="featured-card__num">
+                <span>01</span>
               </div>
 
+              {/* Content column */}
               <div className="featured-card__content">
-                <div>
-                  <div className="featured-card__tags">
-                    {featured.tags.slice(0, 2).map((tag) => (
-                      <span key={tag} className="tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="featured-card__title">{featured.title}</h2>
-                  <p className="featured-card__desc">{featured.description}</p>
+                <div className="featured-card__eyebrow">
+                  {featured.tags.slice(0, 2).join(" · ")}
                 </div>
-
-                <div>
-                  <div className="featured-card__meta">
-                    <span>{featured.date}</span>
-                    <span>·</span>
-                    <span>{featured.readingTime}</span>
-                  </div>
-                  <span className="featured-card__cta">
-                    Read full article
-                    <span>→</span>
+                <h2 className="featured-card__title">{featured.title}</h2>
+                <p className="featured-card__desc">{featured.description}</p>
+                <div className="featured-card__meta">
+                  <span className="featured-card__meta-text">
+                    {featured.date} · {featured.readingTime}
                   </span>
+                  <span className="featured-card__read">Read article →</span>
                 </div>
+              </div>
+
+              {/* Diagnosis / side column */}
+              <div className="featured-card__side">
+                {featured.diagnosisPreview ? (
+                  <>
+                    <div className="featured-card__diagnosis-label">
+                      {"// Quick diagnosis"}
+                    </div>
+                    <div className="featured-card__diagnosis-rows">
+                      {featured.diagnosisPreview.map((row, i) => (
+                        <div key={i} className="featured-card__diagnosis-row">
+                          <span className="featured-card__diagnosis-symptom">
+                            {row.symptom}
+                          </span>
+                          <span className="featured-card__diagnosis-cause">
+                            {row.cause}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <p className="featured-card__side-fallback">
+                    &ldquo;{featured.description}&rdquo;
+                  </p>
+                )}
               </div>
             </Link>
           </section>
         )}
 
+        {/* Latest articles grid */}
         {rest.length > 0 && (
           <section
-            className="animate-fade-up animate-fade-up-5"
-            style={{ marginBottom: "4rem" }}
+            className="animate-fade-up animate-fade-up-3"
+            style={{ marginBottom: "2.5rem" }}
           >
-            <p className="section-label">Latest Articles</p>
+            <p className="section-label">Latest articles</p>
 
             <div className="posts-grid">
-              {rest.map((post) => (
-                <PostCard key={post.slug} post={post} />
+              {rest.map((post, i) => (
+                <PostCard key={post.slug} post={post} index={i + 1} />
               ))}
             </div>
 
-            <div style={{ textAlign: "center", marginTop: "3rem" }}>
-              <Link href="/blog" className="btn-primary">
+            <div style={{ textAlign: "center", marginTop: "2rem" }}>
+              <Link href="/blog" className="btn-ghost">
                 View all {posts.length} articles →
               </Link>
             </div>
@@ -168,14 +182,18 @@ export default function Home() {
 
         <div className="gold-rule" />
 
-        <section style={{ padding: "2rem 0 5rem", maxWidth: "640px" }}>
+        {/* Why this site exists */}
+        <section
+          className="animate-fade-up animate-fade-up-4"
+          style={{ padding: "0 0 3rem", maxWidth: "640px" }}
+        >
           <p className="section-label" style={{ marginBottom: "1.5rem" }}>
             Why this site exists
           </p>
           <p
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "1.5rem",
+              fontSize: "1.45rem",
               fontWeight: 400,
               lineHeight: 1.5,
               fontStyle: "italic",
@@ -183,8 +201,8 @@ export default function Home() {
               marginBottom: "1.25rem",
             }}
           >
-            &quot;Check your watering schedule&quot; is not an answer. It&apos;s
-            a suggestion to keep guessing.
+            &ldquo;Check your watering schedule&rdquo; is not an answer.
+            It&apos;s a suggestion to keep guessing.
           </p>
           <p
             style={{
@@ -200,6 +218,14 @@ export default function Home() {
             the difference.
           </p>
         </section>
+
+        {/* Email subscribe */}
+        <div
+          className="animate-fade-up animate-fade-up-5"
+          style={{ marginBottom: "2rem" }}
+        >
+          <EmailSubscribe />
+        </div>
       </div>
     </>
   );

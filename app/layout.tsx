@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,7 +9,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -20,16 +21,21 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
-
   title: {
     default: "PlantProblem | Houseplant Care & Troubleshooting",
     template: "%s | PlantProblem",
   },
   description:
     "Practical, no-fluff guides to diagnose and fix your houseplant problems. Yellow leaves, root rot, pests — we have the answer.",
-
   applicationName: "PlantProblem",
   authors: [{ name: "PlantProblem", url: process.env.NEXT_PUBLIC_BASE_URL! }],
   generator: "Next.js",
@@ -43,7 +49,6 @@ export const metadata: Metadata = {
     "plant care guide",
   ],
   referrer: "origin-when-cross-origin",
-
   robots: {
     index: true,
     follow: true,
@@ -55,14 +60,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-
   alternates: {
     canonical: process.env.NEXT_PUBLIC_BASE_URL,
     languages: {
       "en-US": process.env.NEXT_PUBLIC_BASE_URL,
     },
   },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -80,7 +83,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     site: "@plantproblem",
@@ -90,13 +92,12 @@ export const metadata: Metadata = {
       "Practical, no-fluff guides to diagnose and fix your houseplant problems.",
     images: ["/opengraph-image.png"],
   },
-
   verification: {
     google: "xXAVFFoSJ0DJ-pRzB3UhtoDBH611SzZOwixtUiYTDDE",
   },
-
   category: "lifestyle",
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -105,12 +106,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${dmSans.variable}`}
-      data-scroll-behavior="smooth"
+      className={`${cormorant.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
-      <head>
-        {/* <link rel="preconnect" href="https://pagead2.googlesyndication.com" /> */}
-      </head>
+      <head />
       <body>
         <JsonLd
           data={{
@@ -142,9 +140,9 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
-      <Analytics />
-      <SpeedInsights />
     </html>
   );
 }
