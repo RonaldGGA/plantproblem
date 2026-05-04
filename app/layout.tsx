@@ -107,6 +107,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${cormorant.variable} ${dmSans.variable} ${dmMono.variable}`}
+      data-scroll-behavior="smooth"
     >
       <head />
       <body>

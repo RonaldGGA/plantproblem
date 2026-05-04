@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -5,9 +6,15 @@ export default function Header() {
     <header className="navbar">
       <div className="navbar__inner">
         <Link href="/" className="navbar__logo">
-          <div className="navbar__logo-mark">
-            <div className="navbar__logo-mark-inner" />
-          </div>
+          <Image
+            src="/icon.svg"
+            alt="PlantProblem Logo"
+            width={20}
+            height={20}
+            style={{ height: "auto", width: "auto" }}
+            loading="eager"
+            priority
+          />
           PlantProblem
         </Link>
 

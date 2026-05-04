@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import EmailSubscribe from "@/components/EmailSubscribe";
+import Image from "next/image";
 
 const TICKER_ITEMS = [
   "Pothos",
@@ -72,7 +73,6 @@ export default function Home() {
       <div className="ticker">
         <span className="ticker__label">{"// Topics"}</span>
         <div className="ticker__track">
-          {/* Items duplicated so the CSS loop is seamless */}
           <div className="ticker__items">
             <div className="ticker__items-inner">
               {TICKER_ITEMS.map((item, i) => (
@@ -108,6 +108,28 @@ export default function Home() {
             <p className="section-label">Featured article</p>
 
             <Link href={`/blog/${featured.slug}`} className="featured-card">
+              {/* Banner — visible only on mobile via CSS */}
+              {featured.coverImage && (
+                <div
+                  className="featured-cover-mobile"
+                  style={{
+                    gridColumn: "1 / -1",
+                    position: "relative",
+                    height: "220px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={featured.coverImage}
+                    alt={featured.title}
+                    fill
+                    sizes="100vw"
+                    priority
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              )}
+
               {/* Number column */}
               <div className="featured-card__num">
                 <span>01</span>
@@ -128,8 +150,29 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Diagnosis / side column */}
+              {/* Side column — hidden on mobile by existing CSS */}
               <div className="featured-card__side">
+                {featured.coverImage && (
+                  <div
+                    style={{
+                      position: "relative",
+                      height: "160px",
+                      marginBottom: "1rem",
+                      overflow: "hidden",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <Image
+                      src={featured.coverImage}
+                      alt={featured.title}
+                      fill
+                      sizes="280px"
+                      priority
+                      style={{ objectFit: "cover" }}
+                    />
+                  </div>
+                )}
+
                 {featured.diagnosisPreview ? (
                   <>
                     <div className="featured-card__diagnosis-label">
