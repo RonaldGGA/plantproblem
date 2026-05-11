@@ -123,7 +123,7 @@ export default function Home() {
                     src={featured.coverImage}
                     alt={featured.title}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 900px) calc(100vw - 4rem)"
                     priority
                     style={{ objectFit: "cover" }}
                   />
